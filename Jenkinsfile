@@ -6,14 +6,13 @@ node{
     }
 
     stage('Build image') {
-        app = docker.build("xavki/nginx")
+        app = docker.build("azeddine/nginx")
     }
 
     stage('Test image') {
-        docker.image('xavki/nginx').withRun('-p 80:80') { c ->
-        sh 'docker ps'
-        sh 'curl localhost'
-	     }
+        docker.image('azeddine/nginx').withRun('-p 80:80') { c ->
+            sh 'docker ps'
+            sh 'curl localhost'
+	}
     }
 }
-
